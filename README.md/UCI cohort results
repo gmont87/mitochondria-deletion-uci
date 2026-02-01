@@ -1,0 +1,14 @@
+## UCI brain cohort (30 samples)
+
+Using Supplementary Data 1 from Omidsalar et al. (2024, *Communications Biology*), I analyzed a 30‑sample UCI postmortem brain cohort with CTRL and SCZ diagnoses. For each sample, I computed the cumulative percentage of reads spanning the Top 30 common mtDNA deletions and stored these metrics in a normalized SQL database (`samples`, `deletions` tables).
+
+- **Cumulative deletion burden:** Across all 30 samples, the cumulative Top 30 deletion burden ranged from 0.5% to 6.1%, with a mean around 2.7%.
+- **Diagnosis comparison (CTRL vs SCZ):** Controls had a higher mean cumulative deletion burden than SCZ (3.14% vs 2.27% in this cohort). A Welch t‑test gave \(t \approx 1.66\), \(p \approx 0.11\), indicating no statistically significant difference at the 0.05 level given the small sample size (n = 15 per group).
+- **Age correlation:** Age showed a moderate positive correlation with cumulative deletion burden (Pearson r ≈ 0.47, p ≈ 0.009), suggesting that older individuals tend to have higher levels of common mtDNA deletions in this dataset, consistent in direction with age‑related accumulation reported in larger cohorts.
+
+- **Common deletions:** Three recurrent deletions emphasized in the paper—6335–13999, 7816–14807, and 8471–13449—were detected in 29/30, 28/30, and 28/30 samples, with mean burdens of ~0.44%, ~0.18%, and ~0.27%, respectively. This supports their classification as high‑frequency mtDNA deletions in human brain tissue.
+
+The analysis is implemented in:
+- `notebooks/01_data_exploration.ipynb` (Excel import, cleaning, merge)
+- `notebooks/02_test_sql_queries.ipynb` (schema sanity checks and SQL summaries)
+- `notebooks/03_analysis_visualization.ipynb` (statistical tests and figures)
