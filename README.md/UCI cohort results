@@ -8,7 +8,19 @@ Using Supplementary Data 1 from Omidsalar et al. (2024, *Communications Biology*
 
 - **Common deletions:** Three recurrent deletions emphasized in the paper—6335–13999, 7816–14807, and 8471–13449—were detected in 29/30, 28/30, and 28/30 samples, with mean burdens of ~0.44%, ~0.18%, and ~0.27%, respectively. This supports their classification as high‑frequency mtDNA deletions in human brain tissue.
 
+- **DNA–RNA concordance:** In a paired subset of the UCI dorsolateral prefrontal cortex (DLPFC) cohort, I compared mtDNA deletion percentages measured from PCR‑amplified DNA to deletion percentages estimated from bulk RNA‑Seq for the same samples. For the three recurrent deletions emphasized in Omidsalar et al. (2024, *Communications Biology*)—6335–13999, 7816–14807, and 8471–13449 (“common deletion”)—DNA and RNA deletion levels showed weak correlations (Pearson r values in the −0.19 to 0.28 range, all p > 0.05), indicating no statistically significant DNA–RNA concordance in this small subset. These results differ from Omidsalar et al., who reported significant positive correlations between DNA and RNA deletion burdens for common mtDNA deletions in larger human brain cohorts. [web:4][web:5]
+
+
 The analysis is implemented in:
-- `notebooks/01_data_exploration.ipynb` (Excel import, cleaning, merge)
+
+- `notebooks/01_data_exploration.ipynb` (Excel import, cleaning, merge into a normalized SQLite schema)
 - `notebooks/02_test_sql_queries.ipynb` (schema sanity checks and SQL summaries)
-- `notebooks/03_analysis_visualization.ipynb` (statistical tests and figures)
+- `notebooks/03_analysis_visualization.ipynb` (UCI cohort statistics, statistical tests, and figures)
+- `notebooks/04_dna_rna_correlations.ipynb` (DNA vs RNA mtDNA deletion correlations and regression plots)
+
+## How to run this analysis
+
+1. Clone this repository and create a Python environment (e.g., `conda env create -f environment.yml` or `pip install -r requirements.txt`, if provided).
+2. Load the UCI cohort tables into the SQLite database using `scripts/01_create_schema.sql` and the corresponding data‑load script or notebook `01_data_exploration.ipynb`.
+3. Open the notebooks in `notebooks/` and run them in order (`01` → `04`) to reproduce the cohort summaries, SQL checks, visualizations, and DNA–RNA correlation analyses.
+
